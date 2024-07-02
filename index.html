@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <span>Chiduso</span>
+    <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="#">PORTFOLIO</a></li>      
+      <li><a href="#">SERVICES</a></li>
+    </ul>
+
+    <button type="button" class="hamburger" id="menu-btn">
+      <span class="hamburger-top"></span>
+      <span class="hamburger-middle"></span>
+      <span class="hamburger-bottom"></span>
+    </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu hidden" id="menu">
+    <ul>
+      <li>
+        <a href="#">HOME</a>
+      </li>
+      <li>
+        <a href="#">ABOUT</a>
+      </li>
+      <li>
+        <a href="#">PORTFOLIO</a>
+      </li>
+      <li>
+        <a href="#">SERVICES</a>
+      </li>
+    </ul>
+
+  </div>
+
+
+  <div class="hero grid-col-2">
+    <div class="text-container">
+      <h1  data-testid="slackDisplayName">Hello, I'm <span>Chiduso</span></h1>
+      <p>A Frontend developer</p>
+    </div>
+    <img  data-testid="slackProfilePicture" src="./assets/img/Untitled-2.png" alt="">
+  </div>
+ 
+  <section>
+    <div class="container">
+      <h1>About me</h1>
+      <p>Hi, I'm Arinze Chiduso David, a Frontend developer based in Benin city, Nigeria. I specialize in web development, and I have 2 years of experience in Frontend development.</p>
+      <h2>Background</h2>
+      <p>I'm pursing a Bachelor Degree in Computer Enginerring from University of Benin, Nigeria.</p>
+      <h2>Skills</h2>
+      <ul>
+        <li>Programming Languages: JavaScript</li>
+        <li>Tools and Technologies: Bootstrap</li>
+        <li>Soft Skills: Teamwork, problem-solving, communication</li>        
+      </ul>
+      <h2>Tech Goals over the next 2 years</h2>
+      <ul>
+        <li>Improve coding skills</li>
+        <li>Learn and Apply New Technologies</li>
+        <li>Understand Project Lifecycle</li>
+        <li>Contribute to Real Projects</li>
+        <li>Collaborate with Professionals</li>
+      </ul>
+      <h2>Personal Interests</h2>
+      <p>Outside of work, I enjoy playing games, reading manga and watching anime. I'm passionate about Art and love to just admire work of arts</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Contact</h2>
+    <h3>Slack</h3>
+    <ul>
+      <li data-testid="slackDisplayName">Chiduso</li>
+      <li data-testid="slackEmail">chiduso.arinze@gmail.com</li>
+    </ul>
+    <p></p>
+  </section>
+  <section class="container links">
+    <h2>Links</h2>
+    <p><a href="https://hng.tech/learn" data-testid="hngLink">HNG</a></p>
+    <p><a href="https://keyword.dog" data-testid="keywordLink">KEYWORD</a></p>
+    <p><a href="https://scrapeanyweb.site" data-testid="scrapeanywebLink">SCRAPEANYWEB</a></p>
+    
+  </section>
+
+  <div class="container">
+    
+      <p data-testid="currentDay">
+      <span id="date">
+        01
+      </span> 
+      <span  id="day">Sunday</span>
+      <span id="month">January</span>
+      <span id="year">1998</span>
+    </p>
+    
+    
+    
+  </div>
+
+  <div class="container">
+    <div data-testid="currentTimeUTC">
+      <span id="hrs">00</span>
+      <span>:</span>
+      <span id="min">00</span>
+      <span>:</span>
+      <span id="sec">00</span>
+    </div>
+  </div>
+<script>
+
+  // Nav
+const btn = document.getElementById('menu-btn')
+const nav = document.getElementById('menu')
+
+function navToggle() {
+  btn.classList.toggle('open')
+  nav.classList.toggle('hidden')
+  document.body.classList.toggle('no-scroll')
+}
+
+btn.addEventListener('click', navToggle)
+
+// clock
+let hrs = document.getElementById("hrs");
+let min = document.getElementById("min");
+let sec = document.getElementById("sec");
+
+setInterval(() => {
+let currentTime = new Date();
+
+
+hrs.innerHTML = (currentTime.getUTCHours()<10?"0":"") + currentTime.getUTCHours();
+min.innerHTML = (currentTime.getUTCMinutes()<10?"0":"") + currentTime.getUTCMinutes();
+sec.innerHTML = (currentTime.getUTCSeconds()<10?"0":"") + currentTime.getUTCSeconds();
+
+},1000)
+
+// date
+const date = document.getElementById("date")
+const day = document.getElementById("day")
+const month = document.getElementById("month")
+const year = document.getElementById("year")
+
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const todayDate = new Date();
+
+date.innerHTML =( todayDate.getDate()<10?"0":"")+ todayDate.getDate() ;
+day.innerHTML = days[todayDate.getDay()];
+month.innerHTML = months[todayDate.getMonth()];
+year.innerHTML = todayDate.getFullYear();
+</script>
+</body>
+</html>
